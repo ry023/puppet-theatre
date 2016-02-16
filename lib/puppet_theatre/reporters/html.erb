@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<meta charset=UTF-8>
+<title><%= @timestamp.strftime('%F %T') %></title>
+<h1><%= @timestamp.strftime('%F %T') %></h1>
+<h2>Summary</h2>
+<% check_names = @results.flat_map {|_, checks| checks.keys }.uniq -%>
+<table>
+<thead>
+    <tr><th scope=column>Host</th>
+    <%- check_names.each do |check_name| -%>
+        <th scope=column><%= check_name.encode(xml: :text) %></th>
+    <%- end -%>
+<tbody>
+    <%- @results.each do |host, checks| -%>
+    <tr><th scope=row><a href=<%= ('#'+host).encode(xml: :attr) %>><%= host.encode(xml: :text) %></a></th>
+    <%- check_names.each do |check_name| -%>
+        <td><%= checks[check_name] ? checks[check_name].alert? ? "&#x2757;" : "&#x2714;" : "-" %></td>
+    <%- end -%>
+    <%- end -%>
+</table>
+<h2>Hosts</h2>
+<%- @results.each do |host, checks| -%>
+<h3 id=<%= host.encode(xml: :attr) %>><a href=<%= ('#'+host).encode(xml: :attr) %>><%= host.encode(xml: :text) %></a></h3>
+<%- checks.each do |name, check| -%>
+<h4><%= name.encode(xml: :text) %></h4>
+<p><%= check.summary.encode(xml: :text) %></p>
+<% unless check.details.empty? -%>
+<pre><%= check.details.join("\n").encode(xml: :text) %></pre>
+<% end -%>
+<% end -%>
+<% end -%>
