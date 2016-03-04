@@ -17,9 +17,9 @@ module PuppetTheatre
 
         def summary
           if failure_count > 0
-            "失敗 (failed=#{failure_count}, total=#{example_count})"
+            "Failed (failed=#{failure_count}, total=#{example_count})"
           else
-            "成功 (failed=0, total=#{example_count})"
+            "OK (failed=0, total=#{example_count})"
           end
         end
 

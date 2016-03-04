@@ -17,11 +17,11 @@ module PuppetTheatre
 
         def summary
           if status == 'failed'
-            '失敗'
+            'Failed'
           elsif out_of_sync_count > 0
-            "更新 (#{out_of_sync_count})"
+            "Out of sync (#{out_of_sync_count})"
           else
-            '最新'
+            'Up to date'
           end
         end
 
