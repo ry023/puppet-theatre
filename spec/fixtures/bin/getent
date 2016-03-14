@@ -1,0 +1,15 @@
+#!/bin/bash
+
+if [[ $1 != hosts ]]; then
+    echo "Unknown database: $1" >&2
+    exit 1
+fi
+
+i=1
+while :; do
+    env=TEST_HOSTS_${i}
+    [[ -z ${!env} ]] && break
+    echo -e "127.0.0.$i\t${!env}"
+
+    let i+=1
+done
