@@ -1,7 +1,7 @@
 module PuppetTheatre
   module Notifiers
     class Console < Base
-      def call(env, msg)
+      def call(msg)
         puts msg
       end
     end

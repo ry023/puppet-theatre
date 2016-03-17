@@ -12,7 +12,7 @@ module PuppetTheatre
       attr_accessor :hosts, :checkers, :reporters, :notifiers
 
       def initialize
-        @hosts = nil
+        @hosts = []
         @checkers = {}
         @reporters = {}
         @notifiers = {}
@@ -26,19 +26,19 @@ module PuppetTheatre
 
       def add_checker(klass, opts = {})
         klass = Checkers.find_class(klass) if klass.is_a?(Symbol)
-        obj = klass.is_a?(Class) ? klass.new(opts) : klass.call(*args)
+        obj = klass.respond_to?(:new) ? klass.new(opts) : klass.call(opts)
         @checkers[opts[:name] || klass.name.split('::')[-1]] = obj
       end
 
       def add_reporter(klass, opts = {})
         klass = Reporters.find_class(klass) if klass.is_a?(Symbol)
-        obj = klass.is_a?(Class) ? klass.new(opts) : klass.call(*args)
+        obj = klass.respond_to?(:new) ? klass.new(opts) : klass.call(opts)
         @reporters[opts[:name] || klass.name.split('::')[-1]] = obj
       end
 
       def add_notifier(klass, opts = {})
         klass = Notifiers.find_class(klass) if klass.is_a?(Symbol)
-        obj = klass.is_a?(Class) ? klass.new(opts) : klass.call(*args)
+        obj = klass.respond_to?(:new) ? klass.new(opts) : klass.call(opts)
         @notifiers[opts[:name] || klass.name.split('::')[-1]] = obj
       end
     end
@@ -91,7 +91,7 @@ module PuppetTheatre
     def notify(msg)
       config(:notifiers).each do |_, notifier|
         begin
-          notifier.call(self, msg)
+          notifier.call(msg)
         rescue
           warn $!
         end
