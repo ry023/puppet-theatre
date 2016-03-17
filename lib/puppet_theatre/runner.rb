@@ -20,7 +20,7 @@ module PuppetTheatre
 
       def hosts_from(klass, opts = {})
         klass = Hosts.find_class(klass) if klass.is_a?(Symbol)
-        obj = klass.is_a?(Class) ? klass.new(opts) : klass.call(*args)
+        obj = klass.respond_to?(:new) ? klass.new(opts) : klass.call(opts)
         @hosts = obj
       end
 
