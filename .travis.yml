@@ -1,4 +1,12 @@
 language: ruby
 rvm:
+  - 2.0.0-p598  # for CentOS 7 :)
   - 2.3.0
-before_install: gem install bundler -v 1.11.2
+  - ruby-head
+
+before_install:
+  - gem install bundler -v 1.11.2
+
+matrix:
+  allow_failures:
+    - rvm: ruby-head
