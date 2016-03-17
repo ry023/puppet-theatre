@@ -9,7 +9,7 @@ describe PuppetTheatre::Hosts.find_class(:getent) do
   shared_context 'use stub getent' do
     around do |example|
       env = {
-        'PATH' => ["#{Dir.pwd}/spec/fixtures/bin", '/bin', '/usr/bin'].join(?:),
+        'PATH' => ["#{Dir.pwd}/test-fixtures/bin", '/bin', '/usr/bin'].join(?:),
       }
 
       hosts.each_with_index do |host, i|
