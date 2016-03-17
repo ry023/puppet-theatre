@@ -27,7 +27,8 @@ module PuppetTheatre
           @result['examples'].map {|example|
             if example['status'] == 'failed'
               "%s:%s %s" % [
-                [example['file_path'], example['line_number']].join(':'),
+                example['file_path'],
+                example['line_number'],
                 example['full_description'],
               ]
             end
