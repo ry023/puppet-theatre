@@ -116,3 +116,7 @@ c.add_notifier :takosan,
 ```
 
 Sends notifications to a [Takosan](https://github.com/kentaro/takosan) server, a web-to-Slack gateway. Requires `takosan` gem.
+
+### Custom Components
+
+You can create a custom component by defining a class in the corresponding modules (`PuppetTheatre::Hosts`, `PuppetTheatre::Checkers`, `PuppetTheatre::Reporters` and `PuppetTheatre::Notifiers`).
