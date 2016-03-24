@@ -24,7 +24,7 @@ c.hosts_from :array, hosts: %w[host1.example.com host2.example.com]
 
 Returns a list of hosts from an array.
 
-### getent
+#### getent
 
 ```ruby
 c.hosts_from :getent, pattern: /\.lan\z/
@@ -32,7 +32,7 @@ c.hosts_from :getent, pattern: /\.lan\z/
 
 Returns a list of hosts available in the result of `getent hosts`, which is usually read from `/etc/hosts` file.
 
-### mackerel
+#### mackerel
 
 ```ruby
 c.hosts_from :mackerel, api_key: 'XXXYYYZZZ', service: 'your-awesome-service'
