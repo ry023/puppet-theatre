@@ -1,6 +1,7 @@
 # PuppetTheatre
 
 PuppetTheatre is an integration framework for configuration management, infrastructure testing and monitoring.
+It runs several checks and tests on a set of servers and generates a report for a quick overview how well the servers are configured.
 
 ## Configuration
 
