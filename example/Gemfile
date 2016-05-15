@@ -1,3 +1,4 @@
 source 'https://rubygems.org'
 
 gem 'puppet-theatre', github: 'hanazuki/puppet-theatre'
+gem 'takosan'
