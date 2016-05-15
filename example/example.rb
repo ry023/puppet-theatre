@@ -40,4 +40,5 @@ PuppetTheatre.run do |c|
   c.add_reporter :html, path: '/srv/puppet_theatre', uri: 'https://status.example.com/'
 
   c.add_notifier :console
+  c.add_notifier :takosan, url: 'http://takosan.example.com:4979', channel: '#dev', name: 'Tako', icon: ':octopus:'
 end
