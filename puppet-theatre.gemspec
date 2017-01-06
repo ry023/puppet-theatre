@@ -21,6 +21,7 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'sshkit', '1.9.0'
   spec.add_dependency 'parallel', '1.10.0'
+  spec.add_dependency 'activesupport', '~> 4.2.7.1'
 
   spec.add_development_dependency 'bundler', '~> 1.11'
   spec.add_development_dependency 'rake', '~> 11.0'
