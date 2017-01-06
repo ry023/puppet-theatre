@@ -1,4 +1,5 @@
 require 'parallel'
+
 module PuppetTheatre
   class Runner
     def initialize(&block)
