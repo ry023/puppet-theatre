@@ -47,11 +47,9 @@ module PuppetTheatre
       end
 
       def call(env, host)
-        Dir.chdir(workdir(host)) do
-          Bundler.with_clean_env do
-            stdout, stderr, status = Open3.capture3(environment(host), command(host))
-            return Result.new(stdout)
-          end
+        Bundler.with_clean_env do
+          stdout, stderr, status = Open3.capture3(environment(host), command(host), chdir: workdir(host))
+          return Result.new(stdout)
         end
       end
 
